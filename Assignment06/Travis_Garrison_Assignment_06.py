@@ -14,6 +14,8 @@
 file_name_str = "ToDoFile.txt"  # The name of the data file
 table_lst = []  # A list that acts as a 'table' of rows
 
+# Import classes
+import os
 
 # Processing  --------------------------------------------------------------- #
 class Processor:
@@ -27,6 +29,11 @@ class Processor:
         :param list_of_rows: (list) you want filled with file data:
         :return: (list) of dictionary rows
         """
+
+        isPath = os.path.exists(file_name)   # True if file exists
+        if not isPath: # Only do extra workd if file not found
+            file = open(file_name, "a")  # file missing, create a blank one
+            file.close()
 
         list_of_rows.clear()  # clear current data
         file = open(file_name, "r")
@@ -128,8 +135,11 @@ class IO:
         :return: nothing
         """
         print("******* The current tasks ToDo are: *******")
-        for row in list_of_rows:
-            print(row["Task"] + " (" + row["Priority"] + ")")
+        if len(list_of_rows) == 0: # Added a "blank" notification
+            print("        ---------- BLANK ---------")
+        else:
+            for row in list_of_rows:
+                print(row["Task"] + " (" + row["Priority"] + ")")
         print("*******************************************")
         print()  # Add an extra line for looks
 
