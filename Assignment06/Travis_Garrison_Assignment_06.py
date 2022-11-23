@@ -7,6 +7,7 @@
 # ChangeLog (Who,When,What):
 # RRoot,1.1.2030,Created started script
 # TGarrison,2022-11-22, Modified code to complete assignment 06
+# TGarrison,2022-11-22, Added error handling for missing txt file
 # ---------------------------------------------------------------------------- #
 
 # Data ---------------------------------------------------------------------- #
